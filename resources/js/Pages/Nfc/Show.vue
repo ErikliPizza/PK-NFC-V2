@@ -16,7 +16,16 @@ import TopMenuSection from "@/Pages/Nfc/Partials/TopMenuSection.vue";
 import CategoryAndAppSection from "@/Pages/Nfc/Partials/CategoryAndAppSection.vue";
 import ListPdf from "@/Components/ListPdf.vue";
 import CustomModal from "@/Components/CustomModal.vue";
-import {usePage} from "@inertiajs/vue3";
+import {ShareIcon} from "@heroicons/vue/24/outline/index.js";
+import Snowflake from "@/Components/Snowflake.vue";
+
+const numSnowflakes = ref(50);
+
+// Custom Composables
+import { useWhatsapp } from "@/Composables/useWhatsapp.vue";
+
+// Composables
+const { shareWith } = useWhatsapp();
 
 const load = ref(false);
 onMounted(() => {
@@ -46,12 +55,30 @@ function toggleZoom() {
 const pdfModal = ref(false); // Ref to control the visibility of the pdf modal
 const closePdfModal = () => { pdfModal.value = false; }; // Function to close the billing modal
 const openPdfModal = () => { pdfModal.value = true; }; // Function to open the billing modal
+
+/**
+ * Opens WhatsApp with a message containing the card's title and current URL.
+ */
+function openWhatsApp() {
+    // Create a new URL object based on the current window location
+    const currentURL = new URL(window.location.href);
+
+    // Remove any query parameters from the URL
+    currentURL.search = '';
+
+    // Create a message containing the card's title and URL
+    const message = encodeURIComponent(`${props.card.title} - ${currentURL.href}`);
+
+    // Call the shareWith function from the useWhatsapp composable
+    shareWith(message);
+}
 </script>
 
 <template>
     <!-- This is the main page for NFC Card showcase -->
 
     <Head title="NFC" ref="content"/>
+    <Snowflake v-for="n in numSnowflakes" :key="n" />
 
   <div class="overlay" v-if="isZoomed" @click="toggleZoom">
 
@@ -81,19 +108,28 @@ const openPdfModal = () => { pdfModal.value = true; }; // Function to open the b
               </Carousel>
           </div>
         <!-- Avatar and QR -->
-        <AvatarFrame>
-          <div class="flex items-center">
-            <Avatar :image="card.image"/>
-          </div>
-          <div class="flex-col items-center zoom-container" :class="{ 'zoomed': isZoomed }" @click="toggleZoom">
-              <p class="text-gray-600 text-sm text-center" v-show="isZoomed">{{__('Click to close')}}</p>
-            <Qur ref="qr" :title="card.title" />
-          </div>
-        </AvatarFrame>
+          <AvatarFrame>
+
+            <span class="relative inline-block">
+    <img class="h-20 w-20 rounded-md" :src="card.image"/>
+    <span class="absolute bottom-0 right-0 block translate-x-1/2 translate-y-1/2 transform rounded-full border-2 border-white">
+        <div class="bg-white p-2 rounded-full block cursor-pointer" @click="openWhatsApp">
+        <ShareIcon class="w-4 h-4"/>
+        </div>
+    </span>
+  </span>
+
+
+
+              <div class="flex-col items-center zoom-container" :class="{ 'zoomed': isZoomed }" @click="toggleZoom">
+                  <p class="text-gray-600 text-sm text-center" v-show="isZoomed">{{__('Click to close')}}</p>
+                  <Qur ref="qr" :title="card.title" />
+              </div>
+          </AvatarFrame>
         <!-- Avatar and QR -->
 
 
-        <!-- Add Contact, Download QR, Share, Show on Maps, Edit buttons and Google Maps iFrame modal -->
+        <!-- Add Contact, Download QR, Show on Maps, Edit buttons and Google Maps iFrame modal -->
         <TopMenuSection :card="card" @downloadQR="qr.onDownload()"/>
         <!-- Add Contact, Download QR, Share buttons -->
 

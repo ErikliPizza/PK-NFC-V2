@@ -26,9 +26,7 @@ import { router, usePage } from "@inertiajs/vue3";
 // Custom Composables
 import { useClipboard } from "@/Composables/useClipboard.vue";
 import { useContact } from "@/Composables/useContact.vue";
-import { useWhatsapp } from "@/Composables/useWhatsapp.vue";
-import TextInput from "@/Components/TextInput.vue";
-import InputLabel from "@/Components/InputLabel.vue";
+
 
 const props = defineProps({
     card: {
@@ -37,8 +35,7 @@ const props = defineProps({
 })
 
 
-// Composables
-const { shareWith } = useWhatsapp();
+
 const { addContact } = useContact();
 const { copyToClipboard } = useClipboard();
 
@@ -107,23 +104,6 @@ const copyAddress = () => {
     // Call the copyToClipboard function with the address and title
     copyToClipboard(value, title);
 };
-
-/**
- * Opens WhatsApp with a message containing the card's title and current URL.
- */
-function openWhatsApp() {
-    // Create a new URL object based on the current window location
-    const currentURL = new URL(window.location.href);
-
-    // Remove any query parameters from the URL
-    currentURL.search = '';
-
-    // Create a message containing the card's title and URL
-    const message = encodeURIComponent(`${props.card.title} - ${currentURL.href}`);
-
-    // Call the shareWith function from the useWhatsapp composable
-    shareWith(message);
-}
 
 /**
  * Edit the card and update its default status if needed.
@@ -266,12 +246,6 @@ onMounted(() => {
         <TopButton @click="$emit('downloadQR')">
             <QrCodeIcon class="w-3 h-3"/>
             <span class="text-sm">{{__('QR')}}</span>
-        </TopButton>
-
-        <!-- Button to share card via WhatsApp -->
-        <TopButton @click="openWhatsApp">
-            <ShareIcon class="w-3 h-3"/>
-            <span class="text-sm truncate px-1">{{__('Share')}}</span>
         </TopButton>
     </TopFrame>
 
