@@ -220,10 +220,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <p class="text-lg font-medium truncate break-words text-center text-gray-800">{{ card.title }}</p>
+    <p class="text-lg font-medium truncate break-words text-center text-gray-800 mt-1">{{ card.title }}</p>
     <p
         ref="bioParagraph"
-        class="px-3 indent-3 cursor-pointer break-words"
+        class="px-3 indent-3 cursor-pointer break-words mt-1"
         :class="{'truncate text-gray-500 italic text-xs bg-gradient-to-r from-gray-500 to-gray-50 text-transparent bg-clip-text': !showBio, 'text-xs bg-gradient-to-r from-gray-700 to-blue-100 inline-block text-transparent bg-clip-text': showBio}"
         @click="toggleBio"
         v-if="card.bio"
