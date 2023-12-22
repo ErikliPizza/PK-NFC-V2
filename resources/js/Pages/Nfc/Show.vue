@@ -96,7 +96,7 @@ function openWhatsApp() {
                   {{ __('PDF') }}
               </XmasButton>
           </div>
-          <div  v-if="card.images.length>0">
+          <div v-if="card.images.length>0" class="mb-3.5">
               <Carousel v-if="isCollapsed" :autoplay="9000" :wrap-around="true">
                   <Slide v-for="slide in card.images" :key="slide.id">
                       <div class="carousel__item p-1">
