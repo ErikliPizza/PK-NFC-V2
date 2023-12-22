@@ -32,6 +32,11 @@ createInertiaApp({
                 timeout: 1750,
                 pauseOnFocusLoss: false,
                 maxToasts: 3,
+                toastDefaults: {
+                    success: {
+                        className: "bg-black"
+                    }
+                }
                 // You can set your default options here
             });
         app.component('Head', Head); // Register the Head component globally
