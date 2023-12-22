@@ -25,6 +25,5 @@ body {
 
 /* Success variant of the notification */
 .Vue-Toastification__toast--success.custom {
-    @apply border-success text-success;
     @apply bg-black;
 }
