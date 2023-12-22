@@ -32,6 +32,8 @@ createInertiaApp({
                 timeout: 1750,
                 pauseOnFocusLoss: false,
                 maxToasts: 3,
+                toastClassName: 'custom',
+                bodyClassName: ['custom'],
                 // You can set your default options here
             });
         app.component('Head', Head); // Register the Head component globally

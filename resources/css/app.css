@@ -23,7 +23,8 @@ body {
     pointer-events: none;
 }
 
-.Vue-Toastification__toast--success {
-    background-color: black; /* Set the background color to black */
-    color: white; /* Optional: change text color to improve readability */
+/* Success variant of the notification */
+.Vue-Toastification__toast--success.custom {
+    @apply border-success text-success;
+    @apply bg-black;
 }
