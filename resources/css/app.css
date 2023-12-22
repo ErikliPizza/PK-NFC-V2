@@ -27,3 +27,7 @@ body {
     background-color: black;
     color: white; /* Optional, for better readability */
 }
+
+.Vue-Toastification__toast--default.black-success-toast  {
+    background-color: black;
+}
