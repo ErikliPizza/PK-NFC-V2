@@ -36,8 +36,7 @@ createInertiaApp({
                     [TYPE.SUCCESS]: {
                         timeout: 3000,
                         hideProgressBar: true,
-                        class: 'bg-black black-success-toast',
-                        className: "bg-black black-success-toast"
+                        toastClassName: "bg-black black-success-toast",
                     }
                 }
                 // You can set your default options here
