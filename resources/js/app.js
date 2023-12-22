@@ -7,7 +7,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import MainLayout from "@/Layouts/MainLayout.vue";
 import { Head } from "@inertiajs/vue3";
-import Toast, {TYPE} from "vue-toastification";
+import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import {translations} from "@/Mixins/translations.js";
 
@@ -32,13 +32,6 @@ createInertiaApp({
                 timeout: 1750,
                 pauseOnFocusLoss: false,
                 maxToasts: 3,
-                toastDefaults: {
-                    [TYPE.SUCCESS]: {
-                        timeout: 3000,
-                        hideProgressBar: true,
-                        toastClassName: "bg-black black-success-toast",
-                    }
-                }
                 // You can set your default options here
             });
         app.component('Head', Head); // Register the Head component globally

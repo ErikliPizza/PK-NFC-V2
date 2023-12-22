@@ -21,9 +21,7 @@ export function useFlashMessages() {
             // Display success message as a toast
             if (newValues.success) {
                 toast.clear();
-                toast.success(newValues.success, {
-                    toastClassName: "bg-black black-success-toast"
-                });
+                toast.success(newValues.success);
             }
             // Display info message as a toast
             if (newValues.info) {
