@@ -23,3 +23,7 @@ body {
     pointer-events: none;
 }
 
+.black-success-toast {
+    background-color: black;
+    color: white; /* Optional, for better readability */
+}
