@@ -154,7 +154,8 @@ const maximumAllowedPdf = usePage().props.auth.user.premium === 1 ? 3 : 1;
             {{ __('Billing Information') }}
           </span>
         </TopButton>
-        <button @click="openPdfModal" class="relative bg-blue-50 p-1 rounded-lg flex justify-center w-full items-center space-x-1 text-sm">
+        <!-- did not use TopButton here because of make it relative specifically !-->
+        <button @click="openPdfModal" class="relative bg-black text-white p-1 rounded-lg flex justify-center w-full items-center space-x-1 text-sm">
             <div class="absolute top-0 right-0 -mt-2.5 -mr-2" v-if="$page.props.auth.user.premium === 1">
                 <StarIcon name="star" class="h-6 w-6 text-yellow-400"></StarIcon>
             </div>

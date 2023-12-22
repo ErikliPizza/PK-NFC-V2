@@ -99,7 +99,7 @@
     "Location Holder": "Adresse öffnen",
     "Show": "Anzeigen",
     "Edit": "Bearbeiten",
-    "Add Location": "Standort hinzufügen",
+    "Add Location": "Standort bearbeiten",
     "Contact": "Kontakt",
     "Social Media": "Soziale Medien",
     "Finance": "Finanzen",
@@ -222,5 +222,7 @@
     "CV": "CV",
     "Press to Locate": "Drücken, um zu lokalisieren",
     "geo_advise": "Nutzen Sie zwei Finger, um auf der Karte zu navigieren und tippen Sie auf den Ort, den Sie markieren möchten. Oder klicken Sie einfach auf die Schaltfläche unten, um Ihren aktuellen Standort automatisch zu verwenden. Vergessen Sie nicht, die notwendigen Berechtigungen für die Standortdienste zu erteilen.",
-    "upgrade_to_premium": "Erweitern Sie Ihr Konto auf Premium, um mehrere PDF-Dateien hochzuladen."
+    "upgrade_to_premium": "Erweitern Sie Ihr Konto auf Premium, um mehrere PDF-Dateien hochzuladen.",
+    "Reset": "Zurücksetzen",
+    "This place looks quite empty": "Dieser Ort sieht ziemlich leer aus"
 }

@@ -193,6 +193,7 @@ function destroy() {
                                 type="text"
                                 class="block w-3/4"
                                 v-model="cardForm.title"
+                                maxlength="30"
                                 required
                                 @keyup.enter="submitCard"
                             />

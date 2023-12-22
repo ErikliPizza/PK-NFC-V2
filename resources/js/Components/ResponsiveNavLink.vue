@@ -27,10 +27,10 @@ const classes = computed(() =>
 
 <style scoped>
 .border-custom {
-    border-color: #ff9600;
+    border-color: #000000;
 }
 .text-custom {
-    color: #dd7607;
+    color: #000000;
 }
 
 .bg-custom {

@@ -100,7 +100,7 @@
     "Location Holder": "Açık adres bilgisi",
     "Show": "Göster",
     "Edit": "Düzenle",
-    "Add Location": "Konum Ekle",
+    "Add Location": "Konumu Düzenle",
     "Contact": "İletişim",
     "Social Media": "Sosyal Medya",
     "Finance": "Finans",
@@ -224,5 +224,7 @@
     "CV": "CV",
     "Press to Locate": "Konumunu Bulmak için Dokun",
     "geo_advise": "Haritada hedeflediğiniz yeri bulmak için iki parmağınızı kullanın ve işaretlemek istediğiniz noktaya dokunun. Veya mevcut konumunuzu otomatik olarak kullanmak için aşağıdaki düğmeye basın. Konum hizmetleri için gerekli izinleri vermekten çekinmeyin.",
-    "upgrade_to_premium": "Birden fazla PDF yüklemek için premium hesaba yükseltin."
+    "upgrade_to_premium": "Birden fazla PDF yüklemek için premium hesaba yükseltin.",
+    "Reset": "Sıfırla",
+    "This place looks quite empty": "Burası oldukça boş görünüyor"
 }

@@ -181,7 +181,7 @@ const updateOrder = async () => {
         <button
             :class="{'bg-sky-800' : orderArray.length}"
             :disabled="!orderArray.length"
-            class="w-full bg-blue-950 text-white font-bold py-2 rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer"
+            class="w-full bg-black text-white font-bold py-2 rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer"
             @click="updateOrder()"
         >
           {{__("Save Changes")}}
@@ -236,7 +236,7 @@ const updateOrder = async () => {
                         <img :src="element.filename" class="rounded-lg w-full h-full no-context-menu">
 
                         <div class="flex justify-between items-center">
-                          <p class="w-2/4 bg-blue-950 p-1 rounded-lg m-2 text-white cursor-pointer" @click="deleteImage(element.id)">{{ __('Delete') }}</p>
+                          <p class="w-2/4 bg-gray-800 p-1 rounded-lg m-2 text-white cursor-pointer" @click="deleteImage(element.id)">{{ __('Delete') }}</p>
                           <ChevronUpDownIcon class="w-6 h-6"/>
                         </div>
 

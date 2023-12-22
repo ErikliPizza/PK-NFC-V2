@@ -6,7 +6,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { Loader } from "@googlemaps/js-api-loader"
 
 // InertiaJS
-import {useForm} from "@inertiajs/vue3";
+import {useForm, router} from "@inertiajs/vue3";
 
 // Heroicons
 import {MapPinIcon, InformationCircleIcon} from "@heroicons/vue/24/solid/index.js";
@@ -14,6 +14,7 @@ import {MapPinIcon, InformationCircleIcon} from "@heroicons/vue/24/solid/index.j
 // Custom components
 import InputLabel from "@/Components/InputLabel.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
+import DangerButton from "@/Components/DangerButton.vue";
 
 
 
@@ -197,6 +198,26 @@ const addLocation = () => {
     }
 };
 
+/**
+ * Remove a location.
+ *
+ * @param {number} id - The ID of the location to be removed.
+ */
+const removeLocation = (id) => {
+    const uri = '/card/removeLocation';
+    const patchOptions = {
+        data: {
+            card_id: id
+        },
+        method: 'patch',
+        preserveState: false,
+        preserveScroll: true,
+        replace: true,
+    };
+    router.visit(uri, patchOptions);
+
+}
+
 const geo_info = ref(false);
 </script>
 
@@ -234,9 +255,10 @@ const geo_info = ref(false);
         </div>
     </div>
     <div class="px-2 mb-2 flex justify-between space-x-2" v-show="!loading">
-        <SecondaryButton @click="$emit('close')" class="truncate"> {{__("Cancel")}} </SecondaryButton>
+        <DangerButton v-if="!!latitude ? true : false" @click="removeLocation(card_id)">{{__("Reset")}}</DangerButton>
+        <SecondaryButton @click="$emit('close')" class="truncate flex justify-center items-center"> {{__("Cancel")}} </SecondaryButton>
         <button
-            class="inline-flex truncate items-center px-4 py-2 bg-green-300 border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"
+            class="inline-flex truncate justify-center items-center px-4 py-2 bg-green-300 border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"
             :class="{ 'opacity-25': form.processing }"
             :disabled="form.processing"
             @click="addLocation"

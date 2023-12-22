@@ -14,10 +14,10 @@ const props = defineProps({
 
 const style = ref({
     animationDuration: `${randomNumber(20, 40)}s`,
-    animationDelay: `${randomNumber(0, 5)}s`, // Added delay for more natural effect
-    opacity: randomNumber(0.2, 0.6),
-    fontSize: `${randomNumber(5, 10)}px`,
-    left: `${randomNumber(0, 100)}vw`,
+    animationDelay: '-2s', // No delay for immediate start
+    opacity: randomNumber(0.2, 0.7),
+    fontSize: `${randomNumber(5, 12)}px`,
+    left: `${randomNumber(0, 90)}vw`,
     top: `-25%`
 });
 
@@ -34,15 +34,17 @@ function randomNumber(min, max) {
     color: white;
     animation-name: fall;
     animation-timing-function: linear;
-    animation-iteration-count: infinite; /* Infinite animation */
+    animation-iteration-count: infinite;
 }
 
 @keyframes fall {
     0% {
-        transform: translateY(-100vh);
+        transform: translateY(0);
+        opacity: 1;
     }
     100% {
         transform: translateY(100vh);
+        opacity: 0; /* Optional: Fade out at the bottom */
     }
 }
 </style>

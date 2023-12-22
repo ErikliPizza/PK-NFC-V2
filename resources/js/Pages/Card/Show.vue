@@ -132,32 +132,6 @@ const deleteInfo = async (id) => {
   }
 }
 
-/**
- * Remove a location.
- *
- * @param {number} id - The ID of the location to be removed.
- */
-const removeLocation = async (id) => {
-    const uri = '/card/removeLocation';
-    const patchOptions = {
-        data: {
-            card_id: id
-        },
-        method: 'patch',
-        preserveState: false,
-        preserveScroll: true,
-        replace: true,
-    };
-
-    if (orderArray.value.length > 0) {
-        const updateResult = await updateOrder();
-        if (updateResult) {
-            await router.visit(uri, patchOptions);
-        }
-    } else {
-        await router.visit(uri, patchOptions);
-    }
-}
 
 /**
  * Update the order of information entries.
@@ -260,35 +234,26 @@ const importFrom = async () => {
         </div>
 
         <!-- Stretched Button Section -->
-        <div class="px-6 py-4 flex">
+        <div class="px-6 py-4 flex justify-center space-x-1">
             <button
-                    :class="{'shake bg-sky-800' : orderArray.length}"
+                    :class="{'shake bg-blue-950' : orderArray.length}"
                     :disabled="!orderArray.length"
-                    class="text-sm w-full bg-blue-950 text-white font-bold py-2 rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer"
+                    class="text-sm w-3/4 bg-black text-white font-bold py-2 rounded-lg hover:bg-blue-950 transition duration-300 cursor-pointer"
                     @click="updateOrder()"
             >
                 {{__("Save Changes")}}
             </button>
-
-            <!-- Show Map and Remove Location Button -->
-            <div v-if="!!card.latitude ? true : false">
-                <div class="flex space-x-1 items-center" @click="showMap=true">
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-indigo-100 rounded-2xl mx-3 cursor-pointer">
-                            <img :src="'/storage/images/apps/map.png'" class="w-full h-full object-cover p-1.5 no-context-menu" alt="App Icon">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <TrashIcon class="w-6 h-6 text-blue-300 cursor-pointer hover:scale-125 transition duration-200" @click="removeLocation(card.id)"/>
-                    </div>
-                </div>
-            </div>
+            <button
+                class="bg-black text-white p-2 rounded-lg hover:bg-blue-950 transition duration-300 cursor-pointer"
+                @click="showImportModal"
+            >
+                <document-duplicate-icon class="w-4 h-4" />
+            </button>
         </div>
 
         <!-- Information List Section -->
         <div class="px-2">
             <ul>
-              <p class="p-2 mb-6 bg-gray-300 rounded-lg w-full text-center" @click="showImportModal">{{__("Import From Other Cards")}}</p>
               <TopLink :href="'/nfc/'+card.slug">
                 <EyeIcon class="w-5 h-5" />
                 <span class="text-sm">{{ __('Show') }}</span>
@@ -381,10 +346,13 @@ const importFrom = async () => {
   <Modal :show="showingImportModal" @close="closeModal">
     <!-- Modal Content -->
     <div class="p-6">
-      <!-- Title for Import Modal -->
-      <h2 class="text-lg font-medium text-gray-900 text-center" @click="showImportModal">
-        {{ __("Import from this card") }}
-      </h2>
+        <!-- Title for Import Modal -->
+        <h2 v-if="cards.length > 1" class="font-bold text-gray-900 text-center mb-2">
+            {{ __("Import from this card") }}
+        </h2>
+        <h3 v-else class="font-bold text-gray-900 text-center mb-2">
+            {{ __("This place looks quite empty") }}
+        </h3>
 
       <!-- List of Cards to Choose From -->
       <div class="px-2">

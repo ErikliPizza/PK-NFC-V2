@@ -99,7 +99,7 @@
     "Location Holder": "Open address information",
     "Show": "Show",
     "Edit": "Edit",
-    "Add Location": "Add Location",
+    "Add Location": "Edit Location",
     "Contact": "Contact",
     "Social Media": "Social Media",
     "Finance": "Finance",
@@ -222,5 +222,7 @@
     "CV": "CV",
     "Press to Locate": "Press to Locate",
     "geo_advise": "Pinpoint your desired location by using two fingers to navigate the map, then tap the spot you wish to mark. Alternatively, simply click the button below to automatically use your current location. Don't forget to grant the necessary permissions for location services.",
-    "upgrade_to_premium": "Upgrade to a premium account for multiple PDF uploads."
+    "upgrade_to_premium": "Upgrade to a premium account for multiple PDF uploads.",
+    "Reset": "Reset",
+    "This place looks quite empty": "This place looks quite empty"
 }

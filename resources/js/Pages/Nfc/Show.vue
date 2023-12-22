@@ -19,10 +19,12 @@ import CustomModal from "@/Components/CustomModal.vue";
 import {ShareIcon} from "@heroicons/vue/24/outline/index.js";
 import Snowflake from "@/Components/Snowflake.vue";
 
-const numSnowflakes = ref(50);
+const numSnowflakes = ref(15);
 
 // Custom Composables
 import { useWhatsapp } from "@/Composables/useWhatsapp.vue";
+import TopButton from "@/Components/Card/TopButton.vue";
+import XmasButton from "@/Components/XmasButton.vue";
 
 // Composables
 const { shareWith } = useWhatsapp();
@@ -78,27 +80,27 @@ function openWhatsApp() {
     <!-- This is the main page for NFC Card showcase -->
 
     <Head title="NFC" ref="content"/>
-    <Snowflake v-for="n in numSnowflakes" :key="n" />
 
   <div class="overlay" v-if="isZoomed" @click="toggleZoom">
-
   </div>
   <MainFrame>
-    <transition name="main-fade">
+      <Snowflake v-for="n in numSnowflakes" :key="n" />
+
+      <transition name="main-fade">
       <div v-if="load">
-          <div class="flex justify-between items-center space-x-2 px-2">
-              <button v-if="card.images.length>0" @click="toggleCollapse" class="bg-blue-50 p-1.5 rounded-lg flex justify-center w-full items-center space-x-1 mb-2 text-xs">
+          <div class="flex justify-between items-center space-x-2 px-2 mb-3.5">
+              <XmasButton v-if="card.images.length>0" @click="toggleCollapse" >
                   {{__('Catalog')}}
-              </button>
-              <button @click="openPdfModal" v-if="card.pdfs.length > 0" class="bg-blue-50 p-1.5 rounded-lg flex justify-center w-full items-center space-x-1 mb-2 text-xs">
+              </XmasButton>
+              <XmasButton @click="openPdfModal" v-if="card.pdfs.length > 0">
                   {{ __('PDF') }}
-              </button>
+              </XmasButton>
           </div>
           <div  v-if="card.images.length>0">
               <Carousel v-if="isCollapsed" :autoplay="9000" :wrap-around="true">
                   <Slide v-for="slide in card.images" :key="slide.id">
-                      <div class="carousel__item">
-                          <img :src="slide.filename" alt="Cover Image">
+                      <div class="carousel__item p-1">
+                          <img :src="slide.filename" class="rounded-sm border border-gray-700" alt="Cover Image">
                       </div>
                   </Slide>
 
@@ -110,8 +112,11 @@ function openWhatsApp() {
         <!-- Avatar and QR -->
           <AvatarFrame>
 
-            <span class="relative inline-block">
+            <span :class="{ 'relative inline-block me-6': !isZoomed}">
     <img class="h-20 w-20 rounded-md" :src="card.image"/>
+                        <div class="absolute top-1.5 left-1 transform -translate-y-1/2 -translate-x-1/2">
+            <img src="https://res.cloudinary.com/freecodez/image/upload/v1701705719/images/guidvrtf8kre7pc3jdk5.webp" alt="Christmas Cap" class="h-8 w-8"> <!-- Adjust size as needed -->
+        </div>
     <span class="absolute bottom-0 right-0 block translate-x-1/2 translate-y-1/2 transform rounded-full border-2 border-white">
         <div class="bg-white p-2 rounded-full block cursor-pointer" @click="openWhatsApp">
         <ShareIcon class="w-4 h-4"/>
@@ -121,8 +126,11 @@ function openWhatsApp() {
 
 
 
-              <div class="flex-col items-center zoom-container" :class="{ 'zoomed': isZoomed }" @click="toggleZoom">
-                  <p class="text-gray-600 text-sm text-center" v-show="isZoomed">{{__('Click to close')}}</p>
+              <div class="zoom-container" :class="
+              { 'z-50 zoomed flex items-center justify-center fixed': isZoomed,
+                'ms-6': !isZoomed
+              }"
+                   @click="toggleZoom">
                   <Qur ref="qr" :title="card.title" />
               </div>
           </AvatarFrame>
@@ -159,10 +167,10 @@ function openWhatsApp() {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100vh;
+  height: 120vh;
   background-color: black; /* Set the background color to match your project */
-  z-index: 999; /* Ensure the backdrop is above everything else */
+  z-index: 30; /* Ensure the backdrop is above everything else */
 }
 .zoom-container {
   transition: transform 0.3s ease;
@@ -170,16 +178,12 @@ function openWhatsApp() {
 }
 
 .zoomed {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(3);
-  z-index: 1000;
+    transform: scale(3);
 }
 hr.sep-2 {
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, #f0f0f0, #dbeafe, #dbeafe, #f0f0f0);
+    background-image: linear-gradient(to right, #f0f0f0, #333030, #333030FF, #f0f0f0);
 }
 
 .main-fade-enter-active, .main-fade-leave-active {

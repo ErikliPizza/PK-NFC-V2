@@ -101,7 +101,7 @@
     "Location Holder": "Adresse",
     "Show": "Afficher",
     "Edit": "Modifier",
-    "Add Location": "Emplacement",
+    "Add Location": "Modifier l'emplacement",
     "Contact": "Contact",
     "Social Media": "Réseaux sociaux",
     "Finance": "Finance",
@@ -224,5 +224,7 @@
     "CV": "CV",
     "Press to Locate": "Appuyez pour localiser",
     "geo_advise": "Utilisez deux doigts pour naviguer sur la carte et touchez l'endroit que vous souhaitez marquer. Sinon, cliquez simplement sur le bouton ci-dessous pour utiliser automatiquement votre position actuelle. N'oubliez pas d'accorder les autorisations nécessaires pour les services de localisation.",
-    "upgrade_to_premium": "Mettez à niveau vers un compte premium pour télécharger plusieurs fichiers PDF."
+    "upgrade_to_premium": "Mettez à niveau vers un compte premium pour télécharger plusieurs fichiers PDF.",
+    "Reset": "Réinitialiser",
+    "This place looks quite empty": "Cet endroit semble assez vide"
 }

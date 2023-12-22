@@ -87,7 +87,7 @@ const maxWidthClass = computed(() => {
                 >
                     <div
                         v-show="show"
-                        class="mb-6 bg-gradient-to-br from-indigo-50 from-0% via-white to-lime-50 rounded-lg shadow-xl transform transition-all sm:w-full sm:mx-auto overflow-hidden"
+                        class="mb-6 bg-white rounded-lg shadow-xl transform transition-all sm:w-full sm:mx-auto overflow-hidden"
                         :class="maxWidthClass"
                     >
                         <div class="modal-content overflow-auto max-h-[75vh]">

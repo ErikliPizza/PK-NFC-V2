@@ -220,20 +220,20 @@ onMounted(() => {
 </script>
 
 <template>
-    <p class="text-lg font-medium truncate break-words text-center text-gray-800 mb-3">{{ card.title }}</p>
+    <p class="text-lg font-medium truncate break-words text-center text-gray-800">{{ card.title }}</p>
     <p
         ref="bioParagraph"
-        class="px-3 indent-3 my-2 cursor-pointer break-words"
+        class="px-3 indent-3 cursor-pointer break-words"
         :class="{'truncate text-gray-500 italic text-xs bg-gradient-to-r from-gray-500 to-gray-50 text-transparent bg-clip-text': !showBio, 'text-xs bg-gradient-to-r from-gray-700 to-blue-100 inline-block text-transparent bg-clip-text': showBio}"
         @click="toggleBio"
         v-if="card.bio"
     >
         {{ card.bio }}
     </p>
-    <div class="flex justify-center mt-6" v-if="hasBillingInformation">
-        <button class="bg-blue-50 p-0.5 rounded-lg flex justify-center w-full items-center mb-2 text-sm" @click="openBillingModal">
+    <div class="flex justify-center mt-3 mb-2" v-if="hasBillingInformation">
+        <TopButton @click="openBillingModal">
             {{ __('Billing Information') }}
-        </button>
+        </TopButton>
     </div>
     <TopFrame>
         <!-- Button to add to contact -->
