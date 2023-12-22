@@ -293,9 +293,4 @@ const changeLanguage = (language) => {
     color: #010f31; /* Change hover color */
     /* Other hover styles */
 }
-
-.Vue-Toastification__toast--success {
-    background-color: black; /* Set the background color to black */
-    color: white; /* Optional: change text color to improve readability */
-}
 </style>

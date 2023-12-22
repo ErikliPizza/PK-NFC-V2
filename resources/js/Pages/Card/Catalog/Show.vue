@@ -273,4 +273,9 @@ const updateOrder = async () => {
 .chosenClass {
     background-color: #757696;
 }
+
+.Vue-Toastification__toast--success {
+    background-color: black; /* Set the background color to black */
+    color: white; /* Optional: change text color to improve readability */
+}
 </style>
