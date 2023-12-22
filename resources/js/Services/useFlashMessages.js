@@ -22,7 +22,7 @@ export function useFlashMessages() {
             if (newValues.success) {
                 toast.clear();
                 toast.success(newValues.success, {
-                    className: "black-success-toast"
+                    toastClassName: "bg-black black-success-toast"
                 });
             }
             // Display info message as a toast
