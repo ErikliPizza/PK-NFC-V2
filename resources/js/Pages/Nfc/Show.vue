@@ -17,9 +17,7 @@ import CategoryAndAppSection from "@/Pages/Nfc/Partials/CategoryAndAppSection.vu
 import ListPdf from "@/Components/ListPdf.vue";
 import CustomModal from "@/Components/CustomModal.vue";
 import {ShareIcon} from "@heroicons/vue/24/outline/index.js";
-import Snowflake from "@/Components/Snowflake.vue";
 
-const numSnowflakes = ref(15);
 
 // Custom Composables
 import { useWhatsapp } from "@/Composables/useWhatsapp.vue";
@@ -84,17 +82,15 @@ function openWhatsApp() {
   <div class="overlay" v-if="isZoomed" @click="toggleZoom">
   </div>
   <MainFrame>
-      <Snowflake v-for="n in numSnowflakes" :key="n" />
-
       <transition name="main-fade">
       <div v-if="load">
           <div class="flex justify-between items-center space-x-2 px-2 mb-3.5">
-              <XmasButton v-if="card.images.length>0" @click="toggleCollapse" >
+              <TopButton v-if="card.images.length>0" @click="toggleCollapse" >
                   {{__('Catalog')}}
-              </XmasButton>
-              <XmasButton @click="openPdfModal" v-if="card.pdfs.length > 0">
+              </TopButton>
+              <TopButton @click="openPdfModal" v-if="card.pdfs.length > 0">
                   {{ __('PDF') }}
-              </XmasButton>
+              </TopButton>
           </div>
           <div v-if="card.images.length>0" class="mb-3.5">
               <Carousel v-if="isCollapsed" :autoplay="9000" :wrap-around="true">
@@ -114,9 +110,6 @@ function openWhatsApp() {
 
             <span :class="{ 'relative inline-block me-6': !isZoomed}">
     <img class="h-20 w-20 rounded-md" :src="card.image"/>
-                        <div class="absolute top-1.5 left-1 transform -translate-y-1/2 -translate-x-1/2">
-            <img src="https://res.cloudinary.com/freecodez/image/upload/v1701705719/images/guidvrtf8kre7pc3jdk5.webp" alt="Christmas Cap" class="h-8 w-8"> <!-- Adjust size as needed -->
-        </div>
     <span class="absolute bottom-0 right-0 block translate-x-1/2 translate-y-1/2 transform rounded-full border-2 border-white">
         <div class="bg-white p-2 rounded-full block cursor-pointer" @click="openWhatsApp">
         <ShareIcon class="w-4 h-4"/>
